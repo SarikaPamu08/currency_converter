@@ -24,6 +24,11 @@ A responsive Currency Converter application built using Flutter and Dart.
 ### Home Screen
 (screenshots/currency-converter1.png)
 
+## Experiment 2: Flutter Widgets
+
+Explored Text, Container, Icon, Row, Column, ElevatedButton,
+Card and ListTile widgets.
+
 ## How to Run
 
 1. Install Flutter SDK.
