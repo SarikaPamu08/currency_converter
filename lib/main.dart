@@ -1,121 +1,295 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CurrencyConverterApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CurrencyConverterApp extends StatelessWidget {
+  const CurrencyConverterApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Currency Converter',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF2563EB),
+        ),
+        useMaterial3: true,
+        fontFamily: 'Arial',
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const CurrencyConverterPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class CurrencyConverterPage extends StatefulWidget {
+  const CurrencyConverterPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<CurrencyConverterPage> createState() =>
+      _CurrencyConverterPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _CurrencyConverterPageState
+    extends State<CurrencyConverterPage> {
+  final TextEditingController amountController =
+      TextEditingController(text: '100');
 
-  void _incrementCounter() {
+  final Map<String, double> rates = {
+    'USD': 1.0,
+    'INR': 83.50,
+    'EUR': 0.92,
+    'GBP': 0.79,
+    'JPY': 150.0,
+  };
+
+  String fromCurrency = 'USD';
+  String toCurrency = 'INR';
+  double? convertedAmount;
+  String? errorMessage;
+
+  void convertCurrency() {
+    final amount = double.tryParse(amountController.text.trim());
+
+    if (amount == null || amount < 0) {
+      setState(() {
+        convertedAmount = null;
+        errorMessage = 'Please enter a valid non-negative amount.';
+      });
+      return;
+    }
+
+    // Rates are illustrative and use USD as the base currency.
+    final result = amount / rates[fromCurrency]! * rates[toCurrency]!;
+
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      convertedAmount = result;
+      errorMessage = null;
     });
   }
 
   @override
+  void dispose() {
+    amountController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: const Color(0xFFF3F6FC),
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
+        backgroundColor: const Color(0xFF172554),
+        foregroundColor: Colors.white,
+        title: const Row(
           children: [
-            const Text('You have pushed the button this many times:'),
+            Icon(Icons.currency_exchange, size: 28),
+            SizedBox(width: 12),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              'Currency Converter',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 520),
+            child: Card(
+              elevation: 4,
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(28),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Icon(
+                      Icons.public,
+                      size: 58,
+                      color: Color(0xFF2563EB),
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Convert your money',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF172554),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Simple, fast and convenient currency conversion.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.blueGrey),
+                    ),
+                    const SizedBox(height: 28),
+                    const Text(
+                      'Amount',
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 8),
+                    TextField(
+                      controller: amountController,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'Enter amount',
+                        prefixIcon: const Icon(Icons.payments_outlined),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'From',
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 8),
+                    DropdownButtonFormField<String>(
+                      value: fromCurrency,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      items: rates.keys.map((currency) {
+                        return DropdownMenuItem(
+                          value: currency,
+                          child: Text(currency),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        if (value != null) {
+                          setState(() => fromCurrency = value);
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 12),
+                    Center(
+                      child: IconButton.filled(
+                        tooltip: 'Swap currencies',
+                        onPressed: () {
+                          setState(() {
+                            final previous = fromCurrency;
+                            fromCurrency = toCurrency;
+                            toCurrency = previous;
+                          });
+                        },
+                        icon: const Icon(Icons.swap_vert),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'To',
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 8),
+                    DropdownButtonFormField<String>(
+                      value: toCurrency,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      items: rates.keys.map((currency) {
+                        return DropdownMenuItem(
+                          value: currency,
+                          child: Text(currency),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        if (value != null) {
+                          setState(() => toCurrency = value);
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                    FilledButton.icon(
+                      onPressed: convertCurrency,
+                      icon: const Icon(Icons.currency_exchange),
+                      label: const Padding(
+                        padding: EdgeInsets.all(14),
+                        child: Text(
+                          'Convert Currency',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ),
+                    if (errorMessage != null) ...[
+                      const SizedBox(height: 16),
+                      Text(
+                        errorMessage!,
+                        style: const TextStyle(color: Colors.red),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                    if (convertedAmount != null) ...[
+                      const SizedBox(height: 24),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFEFF6FF),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          children: [
+                            const Text(
+                              'Converted Amount',
+                              style: TextStyle(
+                                color: Color(0xFF1D4ED8),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              '${convertedAmount!.toStringAsFixed(2)} '
+                              '$toCurrency',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF172554),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              '${amountController.text} $fromCurrency '
+                              '= ${convertedAmount!.toStringAsFixed(2)} '
+                              '$toCurrency',
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Note: Exchange rates are illustrative, '
+                      'not live market rates.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blueGrey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
