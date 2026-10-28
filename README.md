@@ -1,17 +1,38 @@
-# currency_converter
 
-A new Flutter project.
+# Currency Converter
 
-## Getting Started
+A responsive Currency Converter application built using Flutter and Dart.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Convert between USD, INR, EUR, GBP and JPY
+- Select source and target currencies
+- Swap currencies easily
+- Validate user input
+- Display converted amounts
+- Responsive interface built with Flutter widgets
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Technologies Used
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+- Dart
+- Material Design
+- Git and GitHub
+
+## Application Screenshots
+
+### Home Screen
+(screenshots/currency-converter1.png)
+
+## How to Run
+
+1. Install Flutter SDK.
+2. Clone this repository.
+3. Navigate to the project directory.
+4. Run `flutter pub get`.
+5. Run `flutter run -d chrome`.
+
+## Note
+
+The exchange rates used in this academic project are illustrative
+and are not updated using a live exchange-rate API.
