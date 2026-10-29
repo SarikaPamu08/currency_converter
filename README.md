@@ -16,6 +16,30 @@ A responsive Currency Converter application built using Flutter and Dart.
 - Material Design
 - Git and GitHub
 
+
+## Experiment 1: Dart SDK Setup and Basic Dart Program
+### Aim
+To understand the Dart programming language and write a simple program using basic Dart concepts.
+
+### Objectives
+- Understand the basics of Dart programming.
+- Learn variables and data types.
+- Perform basic arithmetic operations.
+- Display output using the `print()` function.
+
+### Program
+Created a simple Dart program to demonstrate variables, data types, and arithmetic operations.
+
+### Concepts Covered
+- Variables and data types (`int`, `double`, `String`, and `bool`)
+- Arithmetic operators (`+`, `-`, `*`, `/`)
+- Output using `print()`
+- Basic Dart program structure
+
+### Result
+Successfully created a basic Dart program demonstrating variables, data types, arithmetic operations, and console output.
+
+
 ## Experiment 2: Flutter Widgets
 Explored Text, Container, Icon, Row, Column, ElevatedButton,
 Card and ListTile widgets.
