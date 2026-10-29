@@ -76,6 +76,19 @@ Converter home screen and conversion history screen.
 **Result:** Demonstrated local and shared state management in a Currency Converter application.
 
 
+### Experiment 6: Custom Widgets and Themes
+
+**Aim:** To create reusable custom widgets and apply themes and custom styles in Flutter.
+
+**Implementation:**
+- Created a reusable `CurrencyInfoCard` custom widget.
+- Used parameters to customize the card title, value, and icon.
+- Applied a common application theme using `ThemeData`.
+- Customized AppBar and ElevatedButton styles.
+- Used theme text styles to maintain consistent UI design.
+
+**Result:** Created reusable currency information cards and applied a consistent theme throughout the application.
+
 ## How to Run
 
 1. Install Flutter SDK.
