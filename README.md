@@ -1,10 +1,8 @@
 
 # Currency Converter
-
 A responsive Currency Converter application built using Flutter and Dart.
 
 ## Features
-
 - Convert between USD, INR, EUR, GBP and JPY
 - Select source and target currencies
 - Swap currencies easily
@@ -13,25 +11,17 @@ A responsive Currency Converter application built using Flutter and Dart.
 - Responsive interface built with Flutter widgets
 
 ## Technologies Used
-
 - Flutter
 - Dart
 - Material Design
 - Git and GitHub
 
-## Application Screenshots
-
-### Home Screen
-(screenshots/currency-converter1.png)
-
 ## Experiment 2: Flutter Widgets
-
 Explored Text, Container, Icon, Row, Column, ElevatedButton,
 Card and ListTile widgets.
 
 
 ### Experiment 3: Responsive UI and Breakpoints
-
 **Aim:** To design a responsive user interface that
 adapts to different screen sizes.
 
@@ -47,7 +37,6 @@ interface suitable for mobile and wider screens.
 
 
 ### Experiment 4: Navigation in Flutter
-
 **Aim:** To implement navigation between screens using
 Navigator and named routes.
 
@@ -63,7 +52,6 @@ Converter home screen and conversion history screen.
 
 
 ### Experiment 5: Stateful and Stateless Widgets
-
 **Aim:** To understand StatefulWidget, StatelessWidget, setState(), and Provider for state management.
 
 **Implementation:**
@@ -77,7 +65,6 @@ Converter home screen and conversion history screen.
 
 
 ### Experiment 6: Custom Widgets and Themes
-
 **Aim:** To create reusable custom widgets and apply themes and custom styles in Flutter.
 
 **Implementation:**
@@ -91,7 +78,6 @@ Converter home screen and conversion history screen.
 
 
 ### Experiment 7: Forms and Input Validation
-
 **Aim:** To create forms with input fields and implement validation and error handling in Flutter.
 
 **Implementation:**
@@ -105,7 +91,6 @@ Converter home screen and conversion history screen.
 
 
 ### Experiment 8: Animations in Flutter
-
 **Aim:** To implement animations in Flutter using opacity and movement effects.
 
 **Implementation:**
@@ -119,7 +104,6 @@ Converter home screen and conversion history screen.
 
 
 ### Experiment 9: REST API Integration
-
 **Aim:** To fetch data from a REST API and display it in a Flutter application.
 
 **Implementation:**
@@ -131,6 +115,19 @@ Converter home screen and conversion history screen.
 - Added a refresh button to fetch updated data.
 
 **Result:** Implemented REST API integration to retrieve and display currency exchange rates in Flutter.
+
+
+### Experiment 10: Unit Testing and Debugging
+**Aim:** To perform unit testing and understand debugging techniques in Flutter.
+
+**Implementation:**
+- Created a `CurrencyConverter` class to perform currency calculations.
+- Wrote unit tests using the Flutter testing framework.
+- Tested normal, zero, and decimal currency conversions.
+- Tested error handling for negative amounts.
+- Used `expect()` to compare actual results with expected results.
+
+**Result:** Created unit tests to verify currency conversion logic and validate error handling.
 
 ## How to Run
 
