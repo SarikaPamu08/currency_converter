@@ -103,6 +103,20 @@ Converter home screen and conversion history screen.
 
 **Result:** Implemented a currency conversion form with input validation and error handling.
 
+
+### Experiment 8: Animations in Flutter
+
+**Aim:** To implement animations in Flutter using opacity and movement effects.
+
+**Implementation:**
+- Used `AnimatedOpacity` to demonstrate a fade animation.
+- Used `AnimatedContainer` to animate widget movement.
+- Used `Duration` to control animation timing.
+- Used `Curves.easeInOut` for smooth transitions.
+- Used `setState()` to toggle the animation states.
+
+**Result:** Implemented fade and slide-like animations for a Currency Converter interface.
+
 ## How to Run
 
 1. Install Flutter SDK.
