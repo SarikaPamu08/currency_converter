@@ -29,11 +29,22 @@ A responsive Currency Converter application built using Flutter and Dart.
 Explored Text, Container, Icon, Row, Column, ElevatedButton,
 Card and ListTile widgets.
 
-## Experiment 3: Currency Converter
 
-Implemented a currency converter using Flutter widgets,
-including TextField, DropdownButtonFormField, IconButton,
-FilledButton, Card and responsive layout widgets.
+### Experiment 3: Responsive UI and Breakpoints
+
+**Aim:** To design a responsive user interface that
+adapts to different screen sizes.
+
+**Implementation:**
+- Used LayoutBuilder to measure available width.
+- Implemented a 600-pixel responsive breakpoint.
+- Used a vertical layout for narrow screens.
+- Used a horizontal layout for wider screens.
+- Applied ConstrainedBox to control maximum content width.
+
+**Result:** Created a responsive Currency Converter
+interface suitable for mobile and wider screens.
+
 
 ## How to Run
 
