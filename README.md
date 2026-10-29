@@ -89,6 +89,20 @@ Converter home screen and conversion history screen.
 
 **Result:** Created reusable currency information cards and applied a consistent theme throughout the application.
 
+
+### Experiment 7: Forms and Input Validation
+
+**Aim:** To create forms with input fields and implement validation and error handling in Flutter.
+
+**Implementation:**
+- Created a form using `Form` and `GlobalKey<FormState>`.
+- Used `TextFormField` to accept the currency amount.
+- Added a dropdown to select the target currency.
+- Validated empty, invalid, and non-positive amounts.
+- Displayed the converted amount after successful validation.
+
+**Result:** Implemented a currency conversion form with input validation and error handling.
+
 ## How to Run
 
 1. Install Flutter SDK.
