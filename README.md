@@ -62,7 +62,18 @@ Navigator and named routes.
 Converter home screen and conversion history screen.
 
 
+### Experiment 5: Stateful and Stateless Widgets
 
+**Aim:** To understand StatefulWidget, StatelessWidget, setState(), and Provider for state management.
+
+**Implementation:**
+- Used StatelessWidget to build the application interface.
+- Used StatefulWidget to manage local UI state.
+- Implemented setState() to toggle conversion details.
+- Used Provider and ChangeNotifier to manage currency conversion data.
+- Used notifyListeners() to update the UI when the data changes.
+
+**Result:** Demonstrated local and shared state management in a Currency Converter application.
 
 
 ## How to Run
