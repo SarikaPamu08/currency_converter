@@ -117,6 +117,21 @@ Converter home screen and conversion history screen.
 
 **Result:** Implemented fade and slide-like animations for a Currency Converter interface.
 
+
+### Experiment 9: REST API Integration
+
+**Aim:** To fetch data from a REST API and display it in a Flutter application.
+
+**Implementation:**
+- Used the HTTP package to send a GET request.
+- Retrieved exchange-rate data from a REST API.
+- Parsed the JSON response using `jsonDecode()`.
+- Used `FutureBuilder` to handle loading, success, and error states.
+- Displayed exchange rates in a list of cards.
+- Added a refresh button to fetch updated data.
+
+**Result:** Implemented REST API integration to retrieve and display currency exchange rates in Flutter.
+
 ## How to Run
 
 1. Install Flutter SDK.
