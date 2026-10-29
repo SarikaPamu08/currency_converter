@@ -46,6 +46,25 @@ adapts to different screen sizes.
 interface suitable for mobile and wider screens.
 
 
+### Experiment 4: Navigation in Flutter
+
+**Aim:** To implement navigation between screens using
+Navigator and named routes.
+
+**Implementation:**
+- Created HomeScreen and HistoryScreen.
+- Used Navigator.push() with MaterialPageRoute.
+- Configured named routes in MaterialApp.
+- Used Navigator.pushNamed() to navigate to history.
+- Used Navigator.pop() to return to the home screen.
+
+**Result:** Implemented navigation between the Currency
+Converter home screen and conversion history screen.
+
+
+
+
+
 ## How to Run
 
 1. Install Flutter SDK.
